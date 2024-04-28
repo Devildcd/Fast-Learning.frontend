@@ -1,0 +1,50 @@
+
+<section class="gradient-custom d-flex align-items-center">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+              <div id="hederDV" class="header-logo" style="margin-top: -10px;">
+                <a href="">
+                  <img id="logo" alt="moncada" src="assets/img/moncada/logo/logoblanco2.png">
+                  <img id="logo2" alt="moncada" src="assets/img/moncada/logo/m.png">
+                </a>
+              </div>
+              <form (ngSubmit)="updateUser()" [formGroup]="EditmiForm" style="height: 420px;">
+
+                <div class="mb-md-5 mt-md-4 pb-5">
+                  <h1 class="text-white mb-2 text-uppercase">Bienvenido</h1>
+                  <p class="text-white-50 mb-5">Actualice sus credenciales de registro!</p>
+
+                  <div class="form-outline form-white mb-4" style="margin-top: -20px;">
+                    <input type="text" class="form-control form-control-lg" formControlName="name" />
+                    <label class="form-label">Nombre</label>
+                  </div>
+
+                  <div class="form-outline form-white mb-4">
+                    <input type="email" class="form-control form-control-lg" formControlName="email" />
+                    <label class="form-label">Correo</label>
+                  </div>
+
+                  <div class="form-outline form-white mb-4">
+                    <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control form-control-lg"
+                      formControlName="password" />
+                    <span id="showPasswordIcon" class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+                      (click)="togglePasswordVisibility()"></span>
+                    <label style="margin-left: 3px;" class="form-label">Contraseña</label>
+                  </div>
+
+                  <button class="btn btn-outline-light btn-lg px-5" type="submit" [disabled]="EditmiForm.invalid">Aceptar</button>
+
+                  <div style="text-align: right; margin-top: -5px;">
+                    <a [routerLink]="['/publico/listado-de-libros']" class="text-white-50"><p class="text-white-50">Volver</p></a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

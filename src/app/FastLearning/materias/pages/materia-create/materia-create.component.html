@@ -1,0 +1,43 @@
+
+<div class="container-fluid">
+
+    <div class="card card d-flex flex-column">
+        <div class="card-body flex-grow-1">
+
+            <div class="col-md-12">
+
+              <form [formGroup]="formCrear">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="example-container">
+
+                      <mat-form-field class="w-100">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="nombre" placeholder="Hello" required>
+                      </mat-form-field>
+                
+                      <mat-form-field class="w-100">
+                          <mat-label>Detalles</mat-label>
+                          <textarea matInput formControlName="descripcion" rows="4" required></textarea>
+                        </mat-form-field>
+
+                        <button mat-raised-button (click)="guardarMateria()" type="submit" style="margin-top: 30px;" color="primary">Crear</button>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                      <mat-card class="example-card" style="height: auto;">
+                          <img mat-card-image style="max-height: 250px; width: auto;" src="assets/img/no-hay-foto-disponible.jpg" alt="Photo of a Shiba Inu">
+                          <mat-card-actions>
+                              <button mat-raised-button color="secundary" style="margin-right: 5px;">Insertar</button>
+                              <button mat-raised-button color="warn">Borrar</button>
+                          </mat-card-actions>
+                        </mat-card>
+                  </div>
+                </div>
+              </form>
+               
+              </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,99 @@
+
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Dcode</div>
+    </a>
+  
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+  
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>FAST LEARNING</span></a>
+    </li>
+  
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        materias
+    </div>
+
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/materias/materias-listado']">
+            <i class="fas fa-graduation-cap"></i>
+            <span> Materias Generales</span></a>
+    </li>
+
+     <!-- Divider -->
+     <hr *ngIf="controlUrl === 'contenidos'" class="sidebar-divider">
+
+     <div *ngIf="controlUrl === 'contenidos'" class="sidebar-heading">
+        contenidos
+    </div>
+
+    <li *ngIf="controlUrl === 'contenidos'" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/contenidos/notas-generales', materiaID]">
+            <i class="fas fa-pen"></i>
+            <span style="margin-left: 8px;">Notas Generales</span></a>
+    </li>
+  
+    <!-- Nav Item - Tables -->
+    <li *ngIf="controlUrl === 'contenidos'" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/contenidos/funciones', materiaID]">
+            <i class="fas fa-cogs"></i>
+            <span style="margin-left: 5px;">Funciones</span></a>
+    </li>
+
+    <li *ngIf="controlUrl === 'contenidos'" class="nav-item">
+        <a class="nav-link" [routerLink]="['/contenidos/consejos', materiaID]">
+            <i class="fas fa-lightbulb"></i>
+            <span style="margin-left: 12px;">Tips</span></a>
+    </li>
+
+    <li *ngIf="controlUrl === 'contenidos'" class="nav-item">
+        <a class="nav-link" [routerLink]="['/contenidos/comandos', materiaID]">
+            <i class="fas fa-terminal"></i>
+            <span style="margin-left: 5px;">Comandos</span></a>
+    </li>
+
+    <li *ngIf="controlUrl === 'contenidos'" class="nav-item">
+        <a class="nav-link" [routerLink]="['/contenidos/bibliografias', materiaID]">
+            <i class="fas fa-book-open"></i>
+            <span style="margin-left: 7px;">Bibliografias</span></a>
+    </li>
+
+    <li *ngIf="controlUrl === 'contenidos'" class="nav-item">
+        <a class="nav-link" [routerLink]="['/contenidos/cursos', materiaID]">
+            <i class="fas fa-chalkboard"></i>
+            <span style="margin-left: 5px;">Cursos</span></a>
+    </li>
+
+    <li *ngIf="controlUrl === 'anotaciones'" class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Notas</span></a>
+    </li>
+
+    <li *ngIf="controlUrl === 'anotaciones'" class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Ejercicios</span></a>
+    </li>
+  
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+  
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+  </ul>

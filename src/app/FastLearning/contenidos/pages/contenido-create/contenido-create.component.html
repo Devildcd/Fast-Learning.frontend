@@ -1,0 +1,76 @@
+
+<div class="container-fluid">
+
+    <div class="card card d-flex flex-column">
+        <div class="card-body flex-grow-1">
+
+            <div class="col-md-12">
+
+              <form [formGroup]="formCrear">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="example-container">
+
+                      <!-- <mat-form-field class="w-100">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="nombre" placeholder="Hello" required>
+                      </mat-form-field> -->
+
+                      <mat-form-field class="w-100">
+                        <mat-label>Tipo de Contenido</mat-label>
+                        <mat-select formControlName="nombre" [(ngModel)]="nombreCompartido" required>
+                          <mat-option value="notaGeneral">Nota General</mat-option>
+                          <mat-option value="funcion">Funcion</mat-option>
+                          <mat-option value="comando">Comando</mat-option>
+                          <mat-option value="tips">Consejo</mat-option>
+                          <mat-option value="bibliografia">Bibliografía</mat-option>
+                          <mat-option value="curso">Curso</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field *ngIf="formCrear.get('nombre')?.value === 'curso'" class="w-100">
+                        <mat-label>Autor</mat-label>
+                        <input matInput formControlName="autor" placeholder="Hello" required>
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+
+                      <mat-form-field class="w-100">
+                        <mat-label>Titulo</mat-label>
+                        <input matInput formControlName="titulo" placeholder="Hello" required>
+                      </mat-form-field>
+
+                      <mat-form-field *ngIf="formCrear.get('nombre')?.value === 'curso'" class="w-100">
+                        <mat-label>Calificación</mat-label>
+                        <input matInput type="number" formControlName="calificacion" placeholder="Hello" required>
+                      </mat-form-field>
+                        </div>
+
+                        <mat-form-field class="w-100">
+                          <mat-label>Detalles</mat-label>
+                          <textarea matInput formControlName="notas" rows="6" required></textarea>
+                        </mat-form-field>
+                      </div>
+                      
+                      <mat-checkbox 
+                      formControlName="especial" color="primary">
+                        Especial
+                      </mat-checkbox>
+
+                      <mat-checkbox
+                      *ngIf="formCrear.get('nombre')?.value === 'bibliografia'"
+                      formControlName="oficial"  color="primary">
+                      Oficial
+                    </mat-checkbox>
+
+                      <button mat-raised-button (click)="crearContenido()" type="submit" style="display: block; margin-top: 10px;" color="primary">Crear</button>
+                      
+              </form>
+               
+              </div>
+        </div>
+    </div>
+
+</div>
