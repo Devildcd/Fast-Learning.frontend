@@ -1,0 +1,29 @@
+
+<div class="sidebar" data-color="purple" data-background-color="black" 
+                     [style.background-image]="'url(../assets/img/Stars_Rivers_Scenery_451528.jpg)'"
+                     style="background-size: cover; background-position: center;">
+  <!--
+      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+      Tip 2: you can also add an image using data-image tag
+  -->
+  <div class="logo"><a [routerLink]="['/inicio/bienvenido']" class="simple-text logo-normal">
+      Fast Learning <i class="fas fa-bolt"></i>
+    </a></div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <li *ngFor="let item of filteredMenuItems" class="nav-item" routerLinkActive="active">
+      <a class="nav-link" [routerLink]="item.path">
+        <i class="{{ item.icon }}"></i>
+        <p>{{ item.label }}</p>
+      </a>
+    </li>
+    <li *ngIf="subject" class="nav-item" routerLinkActive="active">
+      <a class="nav-link" [routerLink]="['/materias/listado']">
+        <i class="fas fa-arrow-left"></i>
+        <p>Volver</p>
+      </a>
+    </li>
+    </ul>
+  </div>
+</div>

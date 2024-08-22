@@ -1,0 +1,119 @@
+<h2 mat-dialog-title>Editar Contenido Exclusivo</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="container-fluid">
+    <div class="card-body flex-grow-1">
+      <div class="col-md-12">
+        <form [formGroup]="formEdit">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="example-container">
+
+                <div class="form-container">
+                  <mat-form-field class="w-100">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="name">
+                  </mat-form-field>
+
+                  <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Disponibilidad en Internet</mat-label>
+                    <mat-select formControlName="availability">
+                      <mat-option value="Poco Comun">Poco Comun</mat-option>
+                      <mat-option value="Raro">Raro</mat-option>
+                      <mat-option value="Muy Raro">Muy Raro</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <h2 *ngIf="exclusive?.exclusive_images?.length! > 0">Galería de Imagénes</h2>
+
+                <div class="preview-images" style="margin-top: 10px;">
+                  <div *ngFor="let image of exclusive?.exclusive_images">
+
+                    <mat-card class="preview-card">
+                      <img [src]="image.path | img">
+                    </mat-card>
+
+                    <mat-card-actions style="margin-left: -5px; margin-top: -8px;">
+                      <button mat-fab color="warn" (click)="deleteImage( image?.id! )" class="small-button">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </mat-card-actions>
+                  </div>
+                </div>
+
+                <div class="preview-images" style="margin-top: 10px;">
+                  <div *ngFor="let doc of exclusive?.exclusive_docs">    
+                     <span style="margin: 5px;">{{ doc.path | doc }}</span>
+                  
+                     <mat-card-actions style="margin-left: -5px; margin-top: -8px;">
+                      <button mat-fab color="warn" (click)="deleteDoc( doc?.id! )" class="small-button">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </mat-card-actions>
+                  </div>
+                </div>
+
+                <h2 *ngIf="exclusive?.exclusive_images?.length! > 0">Agregar Nuevos</h2>
+                <div class="d-flex">
+                  <button class="custom-color-add" mat-raised-button style="margin-right: 5px;" color="primary"
+                    onclick="document.getElementById('fileInput').click();">
+                    Imágenes <i class="fas fa-camera"></i>
+                  </button>
+                  <input type="file" id="fileInput" (change)="onFileSelected($event)" multiple style="display: none;">
+
+                  <button class="custom-color-add" mat-raised-button style="margin-right: 5px;" color="primary"
+                    onclick="document.getElementById('fileInputDoc').click();">
+                    Documentos <i class="fas fa-camera"></i>
+                  </button>
+                  <input type="file" id="fileInputDoc" (change)="onFileSelectedDocs($event)" multiple style="display: none;">
+                </div>
+
+                <div class="preview-images" style="margin-top: 10px;">
+                  <div *ngFor="let previewImg of previewImgs; let i = index">
+
+                    <mat-card class="preview-card">
+                      <img [src]="previewImg" alt="Preview Image">
+                    </mat-card>
+
+                    <mat-card-actions style="margin-left: -5px; margin-top: -8px;">
+                      <button mat-fab color="warn" (click)="removeImage(i)" class="small-button">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </mat-card-actions>
+
+                  </div>
+                </div>
+
+                <div class="preview-images" style="margin-top: 10px;">
+                  <div *ngFor="let previewDoc of previewDocs; let i = index">    
+                     <span style="margin: 5px;">{{ exclusive.exclusive_docs![i].path | doc }}</span>
+                  
+                     <mat-card-actions style="margin-left: -5px; margin-top: -8px;">
+                      <button mat-fab color="warn" (click)="removeDoc(i)" class="small-button">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </mat-card-actions>
+                  </div>
+                </div>
+
+            <div class="form-container">
+                <mat-form-field class="w-100">
+                  <mat-label>Detalles</mat-label>
+                  <textarea matInput formControlName="description" rows="9" required></textarea>
+                </mat-form-field>
+              </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button class="custom-color-add" (click)="onEdit()" type="submit" [mat-dialog-close]="true"
+    cdkFocusInitial color="primary"><i class="fas fa-check"></i></button>
+  <button mat-raised-button color="warn" mat-dialog-close><i class="fas fa-times"></i></button>
+</mat-dialog-actions>

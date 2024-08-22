@@ -1,0 +1,64 @@
+
+<h2 mat-dialog-title>Crear Materia</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="container-fluid">
+
+        
+            <div class="card-body flex-grow-1">
+    
+                <div class="col-md-12">
+    
+                  <form [formGroup]="formCreate">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="example-container">
+                            <div class="form-container">
+                              <mat-form-field class="w-100" appearance="fill">
+                                <mat-label>Especialidad</mat-label>
+                                <mat-select formControlName="specialization_id">
+                                  <mat-option *ngFor="let specialization of specializations" [value]="specialization.id">{{ specialization.name }}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+
+                                  <mat-form-field class="w-100">
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput formControlName="title">
+                                  </mat-form-field>
+                            </div>
+                             
+                          <mat-form-field class="w-100">
+                              <mat-label>Detalles</mat-label>
+                              <textarea matInput formControlName="description" rows="9" required></textarea>
+                            </mat-form-field>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <mat-card class="example-card" style="height: auto;">
+                          <img *ngIf="!selectedFile" mat-card-image style="max-height: 272px; width: auto;" src="assets/img/no-hay-foto-disponible.jpg">
+                          <img *ngIf="selectedFile" mat-card-image style="max-height: 272px; width: auto;" [src]="previewImg" alt="Preview Image">
+                          <mat-card-actions>
+                              <button mat-raised-button color="secundary"
+                              onclick="document.getElementById('fileInput').click();" style="margin-right: 5px;">Insertar</button>
+                              <input type="file" id="fileInput" (change)="onFileSelected($event)" [disabled]="selectedFile"  style="display: none;">
+                              <button mat-raised-button (click)="removeSelectedFile()" [disabled]="!selectedFile" color="warn">Borrar</button>
+                          </mat-card-actions>
+                        </mat-card>
+                      </div>
+                    </div>
+                  </form>
+                   
+                  </div>
+            </div>
+        </div>
+    
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button class="custom-color-add" (click)="onSubmit()" type="submit" [mat-dialog-close]="true" cdkFocusInitial color="primary"><i class="fas fa-check"></i></button>
+  <button mat-raised-button color="warn"  mat-dialog-close><i class="fas fa-times"></i></button>
+</mat-dialog-actions>
+
+
+
+
+

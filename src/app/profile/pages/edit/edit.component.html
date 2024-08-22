@@ -1,0 +1,58 @@
+
+<h2 mat-dialog-title>Editar Perfil</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="container-fluid">
+
+        
+            <div class="card-body flex-grow-1">
+    
+                <div class="col-md-12">
+    
+                  <form [formGroup]="formEdit">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="example-container">
+                          
+                          <div class="form-container">
+                            <mat-form-field class="w-100">
+                              <mat-label>Seleccionar Perfil</mat-label>
+                              <mat-select formControlName="category_id" placeholder="Seleccionar categoría">
+                                <mat-option *ngFor="let category of categories" [value]="category.id">
+                                  {{ category.name }}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="w-100" appearance="fill">
+                              <mat-label>Nombre</mat-label>
+                              <mat-select formControlName="name">
+                                <mat-option value="Backend">Backend</mat-option>
+                                <mat-option value="Frontend">Frontend</mat-option>
+                                <mat-option value="Control de Versiones">Control de Versiones</mat-option>
+                                <mat-option value="Manejadores de Paquetes">Manejadores de Paquetes</mat-option>
+                                <mat-option value="Devops">Devops</mat-option>
+                              </mat-select>
+                            </mat-form-field>            
+                          </div>
+                    
+                          <mat-form-field class="w-100">
+                              <mat-label>Detalles</mat-label>
+                              <textarea matInput formControlName="description" rows="9" required></textarea>
+                            </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                   
+                  </div>
+            </div>
+        </div>
+    
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button class="custom-color-add" (click)="onEdit()" type="submit" [mat-dialog-close]="true" cdkFocusInitial color="primary"><i class="fas fa-check"></i></button>
+  <button mat-raised-button color="warn"  mat-dialog-close><i class="fas fa-times"></i></button>
+</mat-dialog-actions>
+
+
+

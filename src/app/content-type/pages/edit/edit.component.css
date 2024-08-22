@@ -1,0 +1,12 @@
+.form-container {
+    display: flex;
+    gap: 10px; /* Añade el espacio deseado entre los elementos */
+  }
+
+  .custom-tittle {
+    color: #ab47bc;
+}
+
+.custom-color-add{
+    background-color: #ab47bc !important;
+  }

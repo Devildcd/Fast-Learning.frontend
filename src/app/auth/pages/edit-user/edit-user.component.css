@@ -1,0 +1,11 @@
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #979697;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgb(153, 21, 21), rgb(91, 91, 92));
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgb(153, 21, 21), rgb(85, 84, 84));
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh; /* Asegura que la sección ocupe al menos el 100% de la altura de la ventana */
+}

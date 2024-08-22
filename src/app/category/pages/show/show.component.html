@@ -1,0 +1,11 @@
+
+<div *ngIf="!loading">
+    <h2 mat-dialog-title style="color: #ab47bc;">{{ category.name }}</h2>
+    <mat-dialog-content class="mat-typography">
+        <p>{{ category.description }}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button color="warn" mat-dialog-close><i class="fas fa-times"></i></button>
+    </mat-dialog-actions>
+</div>
+

@@ -1,0 +1,72 @@
+
+<h2 mat-dialog-title>Crear Especializacion</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="container-fluid">
+
+        
+            <div class="card-body flex-grow-1">
+    
+                <div class="col-md-12">
+    
+                  <form [formGroup]="formCreate">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="example-container">
+                          <div class="form-container">
+
+                            <mat-form-field class="w-100">
+                              <mat-select formControlName="profile_id" placeholder="Seleccionar perfil" (selectionChange)="selectedProfile = $event.value">
+                                <mat-option *ngFor="let profile of profiles" [value]="profile.id">
+                                  {{ profile.name }}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="w-100" appearance="fill">
+                              <mat-label>Nombre</mat-label>
+                              <mat-select formControlName="name">
+                                <mat-option  value="framework">Framework</mat-option>
+                                <mat-option  value="lenguaje">Lenguaje</mat-option>
+                                <mat-option  value="basico">Básico</mat-option>
+                                <mat-option  value="lenguaje_de_estilos">Lenguaje de Estilos</mat-option>
+                                <mat-option  value="herramientas_de_diseño">Herramientas de Diseño</mat-option>
+                                <mat-option  value="contenedores">Contenedores</mat-option>
+                                <mat-option  value="patrones_de_arquitectura">Patrones de Arquitectura</mat-option>
+                                <mat-option  value="almacenamiento_en_cache">Almacenamiento en Caché</mat-option>
+                                <mat-option  value="testeo">Testeo</mat-option>
+                                <mat-option  value="bases_de_datos">Bases de Datos</mat-option>
+                                <mat-option  value="git">Git</mat-option>
+                                <mat-option  value="npm">Npm</mat-option>
+                                <mat-option  value="yarn">Yarn</mat-option>
+                                <mat-option  value="webpack">Webpack</mat-option>
+                                <mat-option  value="rollup">Rollup</mat-option>
+                                <mat-option  value="parcel">Parcel</mat-option>
+                                <mat-option  value="herramientas_CI_CD">Herramientas CI/CD</mat-option>
+                                <mat-option  value="proveedores_en_la_nube">Proveedores en la Nube</mat-option>
+                                <mat-option  value="conceptos_de_redes">Conceptos de Redes</mat-option>
+                              </mat-select>
+                            </mat-form-field>            
+                          </div>
+                    
+                          <mat-form-field class="w-100">
+                              <mat-label>Detalles</mat-label>
+                              <textarea matInput formControlName="description" rows="9" required></textarea>
+                            </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                   
+                  </div>
+            </div>
+        </div>
+    
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button class="custom-color-add" (click)="onSubmit()" type="submit" [mat-dialog-close]="true" cdkFocusInitial color="primary"><i class="fas fa-check"></i></button>
+  <button mat-raised-button color="warn"  mat-dialog-close><i class="fas fa-times"></i></button>
+</mat-dialog-actions>
+
+
+
+

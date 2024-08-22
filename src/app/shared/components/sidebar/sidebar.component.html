@@ -1,0 +1,53 @@
+
+<div class="sidebar" data-color="purple" data-background-color="black" 
+                     [style.background-image]="'url(../assets/img/Stars_Rivers_Scenery_451528.jpg)'"
+                     style="background-size: cover; background-position: center;">
+  <!--
+      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+      Tip 2: you can also add an image using data-image tag
+  -->
+  <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+      Fast Learning
+    </a></div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <li class="nav-item" [routerLinkActive] = "['active']">
+        <a class="nav-link" [routerLink]="['/inicio/bienvenido']">
+          <i class="fas fa-th"></i>
+          <p>Inicio</p>
+        </a>
+      </li>
+      <li class="nav-item" [routerLinkActive] = "['active']">
+        <a class="nav-link" [routerLink]="['/auth/usuarios']">
+          <i class="fas fa-user"></i>
+          <p>Usuarios</p>
+        </a>
+      </li>
+      <li class="nav-item " [routerLinkActive] = "['active']">
+        <a class="nav-link" [routerLink]="['/categorias/listado']">
+          <i class="fas fa-server"></i>
+          <p>Categorias</p>
+        </a>
+      </li>
+      <li class="nav-item " [routerLinkActive] = "['active']">
+        <a class="nav-link" [routerLink]="['/perfiles/listado']">
+          <i class="fas fa-certificate"></i>
+          <p>Perfiles</p>
+        </a>
+      </li>
+      <li class="nav-item " [routerLinkActive] = "['active']">
+        <a class="nav-link" [routerLink]="['/especializaciones/listado']">
+          <i class="fas fa-sitemap"></i>
+          <p>Especializaciones</p>
+        </a>
+      </li>
+      <li class="nav-item " [routerLinkActive] = "['active']">
+        <a class="nav-link" [routerLink]="['/materias/listado']">
+          <i class="fas fa-book-open"></i>
+          <p>Materias</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

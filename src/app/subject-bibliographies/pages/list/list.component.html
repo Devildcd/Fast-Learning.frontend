@@ -1,0 +1,107 @@
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title">Bibliografias de {{ subject?.title}}</h4>
+    </div>
+    <div class="card-body table-responsive">
+        <button mat-mini-fab (click)="createBibliography()" color="secundary" class="float-right custom-color-add">
+            <i class="fas fa-plus"></i>
+        </button>
+
+        <div class="group">
+            <svg *ngIf="!terminoBusqueda" viewBox="0 0 24 24" aria-hidden="true" class="icon">
+                <g>
+                    <path
+                        d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                    </path>
+                </g>
+            </svg>
+            <svg *ngIf="terminoBusqueda" (click)="clearBuscador()" viewBox="0 0 24 24" aria-hidden="true" class="icon">
+                <g>
+                    <path
+                        d="M20.49 5.51c.287-.288.287-.75 0-1.038-.288-.287-.75-.287-1.038 0L12 10.962 4.549 3.513c-.287-.287-.75-.287-1.038 0s-.287.75 0 1.038L10.962 12l-7.45 7.451c-.287.287-.287.75 0 1.038.143.143.329.214.515.214s.372-.072.515-.214L12 13.038l7.451 7.451c.143.143.329.214.515.214s.372-.072.515-.214c.287-.288.287-.75 0-1.038L13.038 12l7.451-7.451z">
+                    </path>
+                </g>
+            </svg>
+            <input class="input" type="search" [(ngModel)]="terminoBusqueda" (input)="filtrarDatos()"
+                placeholder="Buscar" />
+        </div>
+
+        <table mat-table [dataSource]="dataSource" class="table table-hover custom-table">
+
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                    </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                    </mat-checkbox>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="url">
+                <th mat-header-cell class="text-warning" *matHeaderCellDef> Link </th>
+                <td mat-cell (click)="$event.stopPropagation()" *matCellDef="let element"><a
+                        (click)="showContent( element.id )">{{ element.url }}</a></td>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+                <th mat-header-cell class="text-warning" *matHeaderCellDef> Oficial </th>
+                <td mat-cell (click)="$event.stopPropagation()" *matCellDef="let element"><a
+                        (click)="showContent( element.id )"><i *ngIf="element.type" class="fas fa-check i-pers"></i></a></td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell class="text-warning" *matHeaderCellDef> </th>
+                <td mat-cell (click)="$event.stopPropagation()" *matCellDef="let element">
+                    <div class="d-flex">
+                        <ul class="wrapper">
+                            <li class="icon edit edit-icon" (click)="showContent( element.id )">
+                                <span class="tooltip">Detalles</span>
+                                <svg viewBox="0 0 24 24" height="1.2em" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M21.1213 2.70705C19.9497 1.53548 18.0503 1.53547 16.8787 2.70705L15.1989 4.38685L7.29289 12.2928C7.16473 12.421 7.07382 12.5816 7.02986 12.7574L6.02986 16.7574C5.94466 17.0982 6.04451 17.4587 6.29289 17.707C6.54127 17.9554 6.90176 18.0553 7.24254 17.9701L11.2425 16.9701C11.4184 16.9261 11.5789 16.8352 11.7071 16.707L19.5556 8.85857L21.2929 7.12126C22.4645 5.94969 22.4645 4.05019 21.2929 2.87862L21.1213 2.70705ZM18.2929 4.12126C18.6834 3.73074 19.3166 3.73074 19.7071 4.12126L19.8787 4.29283C20.2692 4.68336 20.2692 5.31653 19.8787 5.70705L18.8622 6.72357L17.3068 5.10738L18.2929 4.12126ZM15.8923 6.52185L17.4477 8.13804L10.4888 15.097L8.37437 15.6256L8.90296 13.5112L15.8923 6.52185ZM4 7.99994C4 7.44766 4.44772 6.99994 5 6.99994H10C10.5523 6.99994 11 6.55223 11 5.99994C11 5.44766 10.5523 4.99994 10 4.99994H5C3.34315 4.99994 2 6.34309 2 7.99994V18.9999C2 20.6568 3.34315 21.9999 5 21.9999H16C17.6569 21.9999 19 20.6568 19 18.9999V13.9999C19 13.4477 18.5523 12.9999 18 12.9999C17.4477 12.9999 17 13.4477 17 13.9999V18.9999C17 19.5522 16.5523 19.9999 16 19.9999H5C4.44772 19.9999 4 19.5522 4 18.9999V7.99994Z" />
+                                    <path fill="none" d="M0 0h24v24H0z" />
+                                </svg>
+                            </li>
+                            <li class="icon edit edit-icon" (click)="editContent( element.id )">
+                                <span class="tooltip">Editar</span>
+                                <svg viewBox="0 0 24 24" height="1.2em" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M21.1213 2.70705C19.9497 1.53548 18.0503 1.53547 16.8787 2.70705L15.1989 4.38685L7.29289 12.2928C7.16473 12.421 7.07382 12.5816 7.02986 12.7574L6.02986 16.7574C5.94466 17.0982 6.04451 17.4587 6.29289 17.707C6.54127 17.9554 6.90176 18.0553 7.24254 17.9701L11.2425 16.9701C11.4184 16.9261 11.5789 16.8352 11.7071 16.707L19.5556 8.85857L21.2929 7.12126C22.4645 5.94969 22.4645 4.05019 21.2929 2.87862L21.1213 2.70705ZM18.2929 4.12126C18.6834 3.73074 19.3166 3.73074 19.7071 4.12126L19.8787 4.29283C20.2692 4.68336 20.2692 5.31653 19.8787 5.70705L18.8622 6.72357L17.3068 5.10738L18.2929 4.12126ZM15.8923 6.52185L17.4477 8.13804L10.4888 15.097L8.37437 15.6256L8.90296 13.5112L15.8923 6.52185ZM4 7.99994C4 7.44766 4.44772 6.99994 5 6.99994H10C10.5523 6.99994 11 6.55223 11 5.99994C11 5.44766 10.5523 4.99994 10 4.99994H5C3.34315 4.99994 2 6.34309 2 7.99994V18.9999C2 20.6568 3.34315 21.9999 5 21.9999H16C17.6569 21.9999 19 20.6568 19 18.9999V13.9999C19 13.4477 18.5523 12.9999 18 12.9999C17.4477 12.9999 17 13.4477 17 13.9999V18.9999C17 19.5522 16.5523 19.9999 16 19.9999H5C4.44772 19.9999 4 19.5522 4 18.9999V7.99994Z" />
+                                    <path fill="none" d="M0 0h24v24H0z" />
+                                </svg>
+                            </li>
+                            <li class="icon delete delete-icon" (click)="onDelete(element.id)">
+                                <span class="tooltip">Borrar</span>
+                                <svg viewBox="0 0 24 24" height="1.2em" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M5.755,20.283,4,8H20L18.245,20.283A2,2,0,0,1,16.265,22H7.735A2,2,0,0,1,5.755,20.283ZM21,4H16V3a1,1,0,0,0-1-1H9A1,1,0,0,0,8,3V4H3A1,1,0,0,0,3,6H21a1,1,0,0,0,0-2Z" />
+                                    <path fill="none" d="M0 0h24v24H0z" />
+                                </svg>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+            </tr>
+        </table>
+    </div>
+    <mat-paginator #paginator class="demo-paginator paginador-transparente" (page)="handlePageEvent($event)"
+        [length]="length" [pageSize]="pageSize" [disabled]="disabled" [showFirstLastButtons]="showFirstLastButtons"
+        [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [hidePageSize]="hidePageSize"
+        [pageIndex]="pageIndex" aria-label="Select page">
+    </mat-paginator>
+</div>

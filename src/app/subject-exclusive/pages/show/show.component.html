@@ -1,0 +1,33 @@
+
+
+
+<div *ngIf="!loading">
+    <h2 mat-dialog-title style="color: #ab47bc;">{{ exclusive.name }}</h2>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <mat-dialog-content class="mat-typography" style="margin-bottom: 10px;">
+                    <p class="dialog-paragraph">{{ exclusive.description }}</p>
+                </mat-dialog-content>
+                <a *ngIf="exclusive.exclusive_docs?.length! > 0" [href]="getDocumentUrl(exclusive.exclusive_docs![0]?.path)" target="_blank">
+                    <button class="botton-pers" mat-button color="warn">Ver {{ exclusive.exclusive_docs![0]?.path | doc }}</button>
+                  </a>
+            </div>
+            <div class="col-md-6" >
+                <div class="carousel-slick">
+                    <ngx-slick-carousel class="carousel" #slickmodal="slick-carousel" [config]="slideConfig">
+                      <div ngxSlickItem *ngFor="let image of exclusive.exclusive_images" class="slide">
+                        <img src="{{ image.path | img }}">
+                      </div>
+                    </ngx-slick-carousel>
+                  </div>
+                  <div *ngIf="exclusive.exclusive_images?.length! === 0">
+                    <img src="/assets/img/no-hay-foto-disponible.jpg" class="img-pers">
+                  </div>
+            </div>
+        </div>
+    </div>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button color="warn" mat-dialog-close><i class="fas fa-times"></i></button>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,39 @@
+.form-container {
+    display: flex;
+    gap: 10px; /* Añade el espacio deseado entre los elementos */
+  }
+
+  .custom-tittle {
+    color: #ab47bc;
+}
+
+.custom-color-add{
+    background-color: #ab47bc !important;
+  }
+
+  .preview-images {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-bottom: 10px;
+  }
+  
+  .preview-card {
+    margin-right: 10px;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .preview-card img {
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .small-button {
+    width: 30px;
+    height: 30px;
+    /* padding: 5px; */
+  }

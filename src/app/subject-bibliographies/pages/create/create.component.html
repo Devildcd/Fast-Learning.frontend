@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Crear Bibliografia</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="container-fluid">
+    <div class="card-body flex-grow-1">
+      <div class="col-md-12">
+        <form [formGroup]="formCreate">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="example-container">
+
+                <div class="form-container">
+
+                  <mat-form-field class="w-100">
+                    <mat-label>Url</mat-label>
+                    <input matInput formControlName="url">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-container">
+                  <mat-form-field class="w-100">
+                    <mat-label>Detalles</mat-label>
+                    <textarea matInput formControlName="description" rows="9" required></textarea>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-container">
+                  <mat-checkbox formControlName="type" color="primary">
+                    Oficial
+                  </mat-checkbox>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button class="custom-color-add" (click)="onSubmit()" type="submit" [mat-dialog-close]="true"
+    cdkFocusInitial color="primary"><i class="fas fa-check"></i></button>
+  <button mat-raised-button color="warn" mat-dialog-close><i class="fas fa-times"></i></button>
+</mat-dialog-actions>

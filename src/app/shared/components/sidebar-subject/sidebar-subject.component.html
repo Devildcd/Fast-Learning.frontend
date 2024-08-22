@@ -1,0 +1,37 @@
+
+
+<div class="sidebar" data-color="purple" data-background-color="black" 
+                     [style.background-image]="'url(../assets/img/Stars_Rivers_Scenery_451528.jpg)'"
+                     style="background-size: cover; background-position: center;">
+  <!--
+      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+      Tip 2: you can also add an image using data-image tag
+  -->
+  <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+      Fast Learning
+    </a></div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <li class="nav-item" [routerLinkActive] = "['active']">
+        <a class="nav-link" [routerLink]="['/inicio/bienvenido']">
+          <i class="fas fa-th"></i>
+          <p>Inicio</p>
+        </a>
+      </li>
+      <li class="nav-item " [routerLinkActive] = "['active']">
+        <a class="nav-link" [routerLink]="['/contenido-niveles/listado']">
+          <i class="fas fa-book"></i>
+          <p>Nivel del Contenido</p>
+        </a>
+      </li>
+      <li class="nav-item " [routerLinkActive] = "['active']">
+        <a class="nav-link" [routerLink]="['/contenido-tipos/listado']">
+          <i class="fas fa-book"></i>
+          <p>Tipo del Contenido</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
